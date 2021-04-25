@@ -1,8 +1,6 @@
 package com.kk.leetcode.Day3Test;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -36,7 +34,7 @@ public class HeapTest692 {
 
 假定 k 总为有效值， 1 ≤ k ≤ 集合元素数。
 输入的单词均由小写字母组成。
-
+//字幕小的可以自定义comprator比较字母的ASII码表
     *
     * */
 
@@ -55,5 +53,38 @@ public class HeapTest692 {
                 .map(Map.Entry::getKey)
                 .limit(k)
                 .collect(Collectors.toList());
+    }
+
+    //伪代码
+    //遍历每一个单词
+    //初始化hashMap
+    //如果不在map则加入
+    //堆中比较
+    //反转集合
+    public List<String> topKFrequent2(String[] words,int k){
+
+        HashMap<String, Integer> map = new HashMap<>();
+        for (String word : words) {
+
+            if(!map.containsKey(word)){
+                map.put(word,0);
+            }
+            int count=map.get(word)+1;
+            map.put(word,count);
+        }
+        PriorityQueue<String> minheap=new  PriorityQueue<>((w1, w2)->map.get(w1).equals(map.get(w2))?w2.compareTo(w1):map.get(w1)-map.get(w2));
+        for (String s : map.keySet()) {
+            minheap.add(s);
+            if(minheap.size() > k){
+                minheap.poll();
+            }
+        }
+        ArrayList<String> list = new ArrayList<>();
+        while(!minheap.isEmpty()){
+            list.add(minheap.poll());
+
+        }
+        Collections.reverse(list);
+        return list;
     }
 }
