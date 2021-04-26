@@ -28,6 +28,28 @@ public class BinarySearch35 {
 输入: [1,3,5,6], 0
 输出: 0
     * */
-
+    public int searchInsert(int[] nums, int target) {
+        //伪代码
+        //边界值判断
+        //left   right
+        //如果m==target  return m
+        //如果m>target  将r移动到m位置上
+        //小于的话  left移动到m+1
+        //if nums[left] > target return left
+        //else return left +1
+        if (nums == null || nums.length == 0) return 0;
+        int left=0,ritht=nums.length-1;
+        while (left<ritht) {
+            int  mid=left+(ritht-left)/2;
+            if(nums[mid]==target){
+                return mid;
+            }else if(nums[mid]>target){
+                ritht=mid;
+            }else{
+                left=mid+1;
+            }
+        }
+        return  nums[left] <target?left+1:left;
+    }
 
 }
