@@ -7,7 +7,7 @@ import java.util.Collections;
  * @author zhaokk
  * @create 2021-04-20 19:56
  */
-public class ArrayDemo {
+public class ArrayDemo485 {
 
 
     public static void main(String[] args) {
