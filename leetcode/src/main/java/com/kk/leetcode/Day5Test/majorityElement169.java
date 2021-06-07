@@ -68,4 +68,5 @@ public class majorityElement169 {
         return nums[nums.length / 2];
     }
     //第一次提交
+    //第二次
 }
