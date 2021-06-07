@@ -67,4 +67,5 @@ public class majorityElement169 {
         Arrays.sort(nums);
         return nums[nums.length / 2];
     }
+    //第一次提交
 }
